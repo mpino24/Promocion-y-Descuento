@@ -20,6 +20,7 @@ const create = [
   check('price').exists().isFloat({ min: 0 }).toFloat(),
   check('order').default(null).optional({ nullable: true }).isInt().toInt(),
   check('availability').optional().isBoolean().toBoolean(),
+  check('promote').optional().isBoolean().toBoolean(),
   check('productCategoryId').exists().isInt({ min: 1 }).toInt(),
   check('restaurantId').exists().isInt({ min: 1 }).toInt(),
   check('restaurantId').custom(checkRestaurantExists),
@@ -45,7 +46,8 @@ const update = [
   check('image').custom((value, { req }) => {
     return checkFileMaxSize(req, 'image', maxFileSize)
   }).withMessage('Maximum file size of ' + maxFileSize / 1000000 + 'MB'),
-  check('restaurantId').not().exists()
+  check('restaurantId').not().exists(),
+  check('promote').optional().isBoolean().toBoolean()
 ]
 
 export { create, update }

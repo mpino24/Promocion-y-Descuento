@@ -24,6 +24,11 @@ const loadModel = (sequelize, DataTypes) => {
     price: DataTypes.DOUBLE,
     image: DataTypes.STRING,
     order: DataTypes.INTEGER,
+    promote: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
     availability: DataTypes.BOOLEAN,
     restaurantId: DataTypes.INTEGER,
     productCategoryId: DataTypes.INTEGER

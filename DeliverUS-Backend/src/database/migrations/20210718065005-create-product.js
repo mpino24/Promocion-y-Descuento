@@ -7,6 +7,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      promote: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       name: {
         allowNull: false,
         type: Sequelize.STRING

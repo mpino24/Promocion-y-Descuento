@@ -203,6 +203,7 @@ export default function EditRestaurantScreen ({ navigation, route }) {
               />
               <ErrorMessage name={'restaurantCategoryId'} render={msg => <TextError>{msg}</TextError> }/>
 
+              
               <Pressable onPress={() =>
                 pickImage(
                   async result => {

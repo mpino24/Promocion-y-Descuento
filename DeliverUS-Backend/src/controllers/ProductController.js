@@ -70,6 +70,25 @@ const destroy = async function (req, res) {
     res.status(500).send(err)
   }
 }
+const promoteDemote = async function (req, res) {
+  try {
+    const product = await Product.findOne({ where: { id: req.params.productId } })
+
+    if (product !== null) {
+      if (product.promote) {
+        product.promote = false
+      } else {
+        product.promote = true
+      }
+      await product.save()
+      res.json(product)
+    } else {
+      res.status(404).send('No encontre el producto')
+    }
+  } catch (err) {
+    res.status(500).send(err)
+  }
+}
 
 const popular = async function (req, res) {
   try {
@@ -113,6 +132,7 @@ const ProductController = {
   create,
   update,
   destroy,
-  popular
+  popular,
+  promoteDemote
 }
 export default ProductController
